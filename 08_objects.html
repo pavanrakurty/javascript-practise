@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objects</title>
+</head>
+<body>
+
+  <script>
+
+    
+
+    const product = {
+      'name' : 'socks',
+      'price': 1100
+    }
+
+    console.log(product);
+    console.log(product.name);
+    console.log(product.price);
+
+    product.newProperty = true;
+    console.log(product);
+
+    delete product.newProperty;
+
+    console.log(product);
+
+    const product2 = {
+      name: 'socks',
+      rating: {
+        stars: 4.5,
+        count: 87
+      },
+      fun: function function1() {
+        console.log('function inside object'); 
+      }
+    }
+
+    // function inside object
+
+    console.log(product2.rating.count);
+    product2.fun();
+
+    console.log(typeof console);
+    console.log(typeof console.log);  
+    // log is a function inside object console
+
+    // console and Math are built in objects 
+
+    // Built in JSON object
+    // Converts javascript object to json object
+
+
+    console.log(JSON.stringify(product2));
+
+    // Javascript object makes sense only within JS, but JSON
+    // object make more sense universally
+
+    // JSON parse is used to convert JSON object back to JS object
+    const jsonObject = JSON.stringify(product2);
+    console.log(JSON.parse(jsonObject));
+
+    //Local Storage variables are used to retain values even after refresh
+
+    localStorage.setItem('message','this is local storage item!');
+    //to set value to local storage variable.
+    //Only strings are allowed
+
+    console.log(localStorage.getItem('message'));  
+    //to get value from local storage variable
+
+    console.log('hello'.length);
+    console.log('hello'.toUpperCase());
+
+    const obj1 = {message: 'hello'};
+    const obj2 = obj1; //only copies the reference to obj1
+
+    obj1.message = 'hello2';
+    console.log(obj1); //even though the object is const, it will allow us to modify the data inside it
+
+    console.log(obj2); //even obj2 got changed
+
+    obj3 = {message: 'hello2'};
+    console.log(obj1 === obj3); //returns false, because rather than data comparison, reference comparison happen here
+
+    obj4 = {message: 'hello2', price:800};
+    const {message, price} = obj4; //destructuring
+    //if the const name is same as object property name, this can be used
+
+    obj5 = {
+      // message : message,
+      message, //short hand syntax. it creates a property message with the value message
+
+      // method: function function1() {
+      //   console.log('method');
+      // }
+      method() {
+        console.log('method'); //short hand syntax to declare functions inside object
+      }
+    }
+
+    console.log(obj5.message);
+    obj5.method();
+
+  </script>
+  
+</body>
+</html>

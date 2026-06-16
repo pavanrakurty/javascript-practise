@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM projects</title>
+
+  <style>
+
+    body{
+      font-family: arial;
+    }
+
+    .subscribe-button {
+      border: none;
+      background-color: black;
+      color: white;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+
+    .is-subscribed{
+      color: black;
+      background-color: rgb(240,240,240);
+    }
+
+    .cost-input{
+      font-size: 15px;
+      /* padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      padding-right: 10px; */
+      padding: 10px;
+    }
+
+    .calculate-button{
+      background-color: green;
+      color: white;
+      border: none;
+      font-size: 15px;
+      padding: 12px 15px;
+      cursor: pointer;
+    }
+
+    .error-text{
+      color: red;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <p>
+    <p>Youtube Subscribe button</p>
+    <button 
+      onClick = "handleSubscribeButton();"
+      class="js-button-subscribe subscribe-button"
+    >
+      Subscribe
+    </button>
+  </p>
+
+  <p>Amazon shipping calculator</p>
+  <input  placeholder="Cost of order" 
+          class="js-amazon-cost cost-input" 
+          onkeydown="calculateCostKeydown(event);"
+  >
+  <button onClick="calculateCost();" class="calculate-button">Calculate</button>
+  <p class="js-calculated-cost"></p>
+  <p class="error-message error-text"></p>
+  
+  <script>
+    function handleSubscribeButton() {
+      const buttonElement = document.querySelector('.js-button-subscribe');
+        if(buttonElement.innerText === 'Subscribe'){
+          buttonElement.innerHTML = 'Subscribed';
+          buttonElement.classList.add('is-subscribed');
+        }
+        else{
+          buttonElement.innerHTML = 'Subscribe';
+          buttonElement.classList.remove('is-subscribed');
+        }
+      }
+
+    function calculateCost(){
+      let inputValue = Number(document.querySelector('.js-amazon-cost').value);
+      document.querySelector('.error-message').innerHTML = '';
+      document.querySelector('.js-calculated-cost').innerHTML = '';
+      if (inputValue > 0){
+
+      if (inputValue < 40){
+        inputValue += 10;
+      }
+      document.querySelector('.js-calculated-cost').innerHTML=`$${inputValue}`;
+      }
+      else{
+        document.querySelector('.error-message').innerHTML='Error: Cost cannot be less than 0$';
+        
+      }
+
+    }
+
+    function calculateCostKeydown(event){
+      if(event.key==='Enter'){
+                calculateCost();
+              }
+    }
+    
+  </script>
+</body>
+</html>  

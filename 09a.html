@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button>9a</button>
+  <button class="js-second-button">9b</button>
+  <p>
+    <button onClick="printSelection('heads');">heads</button>
+    <button onClick="printSelection('tails');">tails</button>
+  </p>
+  <p class="js-show-selction"></p>
+
+  <input placeholder="Name" class="js-name-enter"
+    onkeydown="handleNameKeyDown(event);">
+  <button onClick="handleName();">Submit</button>
+  <p class="js-display-name"></p>
+
+  <script>
+    const text = document.querySelector('button').innerHTML
+    console.log(text)
+
+    document.querySelector('.js-second-button').innerHTML = '9b done!';
+
+    function printSelection(selection){
+      document.querySelector('.js-show-selction').innerHTML = `You selected ${selection}!`;
+    }
+
+    function handleName(){
+      const name = document.querySelector('.js-name-enter').value;
+      document.querySelector('.js-display-name')
+        .innerHTML = `Your name is ${name}`;
+    }
+
+    function handleNameKeyDown(event){
+      if(event.key === 'Enter'){
+        handleName();
+      }
+    }
+
+
+
+  </script>
+  
+</body>
+</html>

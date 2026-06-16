@@ -1,0 +1,16 @@
+body {
+  background-color: black;
+  color: white
+}
+
+button{
+  background-color: rgb(72, 68, 68);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 40px;
+}
+
+.operations{
+  background-color: rgb(237, 138, 1);
+}

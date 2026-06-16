@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10a</title>
+
+  <style>
+    .add-to-cart{
+      background-color: rgb(255, 216,20);
+      color: black;
+      border-radius: 20px;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .request-now{
+      background-color: black;
+      color: white;
+      border-radius: 10px;
+      border: none;
+      padding: 10px 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .schedule-for-later{
+      background-color: rgb(230, 230, 230);
+      color: black;
+      border: none;
+      padding: 10px 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .option{
+      background-color: rgb(230, 230, 230);
+      border-radius: 10px;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .is-toggled{
+      background-color: rgb(9, 8, 8);
+      color: white;
+    }
+
+  </style>
+</head>
+<body>
+
+  <button class="add-to-cart">
+    Add to Cart
+  </button>
+  <p>
+    <button class="request-now">
+      Request now
+    </button>
+
+    <button class="schedule-for-later">
+      Schedule for later
+    </button>
+  </p>
+
+  <button class="js-button">Test</button>
+
+  <!-- <p>
+    <button class="option gaming" onClick = "Toggled('gaming');">Gaming</button>
+    <button class="option music" onClick = "Toggled('music');">Music</button>
+    <button class="option tech" onClick = "Toggled('tech');">Tech</button>
+  </p> -->
+
+  <p>
+    <button class="option gaming" onClick = "SingleToggled('.gaming');">Gaming</button>
+    <button class="option music" onClick = "SingleToggled('.music');">Music</button>
+    <button class="option tech" onClick = "SingleToggled('.tech');">Tech</button>
+  </p>
+
+  <script>
+    const button = document.querySelector('.js-button');
+    console.log(button.classList.contains('js-button'));
+
+    // function Toggled(userOption){
+    //   const selectedOption = document.querySelector(`.${userOption}`);
+    //   if (!selectedOption.classList.contains('is-toggled')){
+    //     selectedOption.classList.add('is-toggled');
+    //   }
+    //   else{
+    //     selectedOption.classList.remove('is-toggled');
+    //   }
+    // }
+
+
+    function SingleToggled(userOption){
+      
+      const userOption2 = document.querySelector(userOption);
+      turnOffPreviousButton();
+      userOption2.classList.add('is-toggled');
+
+    }
+
+    function turnOffPreviousButton() {
+      const selectedOption = document.querySelector('.is-toggled');
+      if (selectedOption){
+        selectedOption.classList.remove('is-toggled');
+      }
+    }
+  </script>
+  
+
+  
+</body>
+</html>

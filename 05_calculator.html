@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+
+  <style>
+    .calculator-buttons {
+      background-color: aliceblue;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <p>
+    <button 
+      class = "calculator-buttons" 
+      onClick = "
+      calculation += '1';
+      console.log(calculation);
+      ">
+      1
+    </button>
+
+    <button 
+      class = "calculator-buttons"
+      onClick = "
+        calculation += '2';
+        console.log(calculation);
+    ">
+    2
+    </button>
+
+    <button 
+      class = "calculator-buttons"
+      onClick = "
+        calculation += '3';
+        console.log(calculation);
+    ">
+      3
+    </button>
+
+    <button 
+      class = "calculator-buttons"
+      onClick = "
+        calculation += ' + ';
+        console.log(calculation);
+    ">
+      +
+    </button>
+  </p>
+
+  <p>
+    <button 
+      class = "calculator-buttons" 
+      onClick = "
+      calculation += '4';
+      console.log(calculation);
+      ">
+      4
+    </button>
+
+    <button 
+      class = "calculator-buttons"
+      onClick = "
+        calculation += '5';
+        console.log(calculation);
+    ">
+    5
+    </button>
+
+    <button 
+      class = "calculator-buttons"
+      onClick = "
+        calculation += '6';
+        console.log(calculation);
+    ">
+      6
+    </button>
+
+    <button 
+      class = "calculator-buttons"
+      onClick = "
+        calculation += ' - ';
+        console.log(calculation);
+    ">
+      -
+    </button>
+  </p>
+
+  <p>
+    <button 
+      class = "calculator-buttons" 
+      onClick = "
+      calculation += '7';
+      console.log(calculation);
+      ">
+      7
+    </button>
+
+    <button 
+      class = "calculator-buttons"
+      onClick = "
+        calculation += '8';
+        console.log(calculation);
+    ">
+    8
+    </button>
+
+    <button 
+      class = "calculator-buttons"
+      onClick = "
+        calculation += '9';
+        console.log(calculation);
+    ">
+      9
+    </button>
+
+    <button 
+      class = "calculator-buttons"
+      onClick = "
+        calculation += ' * ';
+        console.log(calculation);
+    ">
+      *
+    </button>
+  </p>
+
+  <p>
+    <button 
+      class = "calculator-buttons" 
+      onClick = "
+      calculation += '0';
+      console.log(calculation);
+      ">
+      0
+    </button>
+
+    <button 
+      class = "calculator-buttons"
+      onClick = "
+        calculation += '.';
+        console.log(calculation);
+    ">
+    .
+    </button>
+
+    <button 
+      class = "calculator-buttons"
+      onClick = "
+      calculation = eval(calculation);
+      console.log(calculation);
+      "
+    >
+      =
+    </button>
+
+    <button 
+      class = "calculator-buttons"
+      onClick = "
+        calculation += ' / ';
+        console.log(calculation);
+    ">
+      /
+    </button>
+  </p>
+
+  <p>
+    <button
+      class = "calculator-buttons"
+      onClick = "calculation = '';
+      console.log('Cleared');
+      ">
+      Clear
+    </button>
+  </p>
+  
+  <script>
+    let calculation = '';
+  </script>
+</body>
+</html>

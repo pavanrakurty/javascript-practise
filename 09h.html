@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9h</title>
+</head>
+<body>
+
+  <input placeholder="Type something"
+    onkeyup = "handleInputKeyUp(event);"
+    class = "js-input"
+  >
+  <p class="js-display-input"></p>
+  <script>
+
+    function handleInputKeyUp(event){
+      const text = document.querySelector('.js-input').value;
+      document.querySelector('.js-display-input').innerHTML = text;
+    }
+
+  </script>
+</body>
+</html>

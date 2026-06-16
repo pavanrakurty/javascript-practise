@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+</head>
+<body>
+  
+  <script>
+    console.log(document.body);
+
+    console.log(document.body.innerHTML);
+
+    document.body
+      .innerHTML = '<button> test button </button> <button class = "js-button"> second button</button>';
+
+    console.log(document.body.querySelector('button')); //returns first button element
+
+    document.body.querySelector('button').innerHTML = 'Changed first button';
+    document.body.querySelector('.js-button').innerHTML = 'Changed second button';
+    //DOM objects gives Javascript code a full control over HTML objects/code
+
+  </script>
+
+</body>
+</html>
