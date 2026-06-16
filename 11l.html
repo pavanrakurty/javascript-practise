@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11l</title>
+</head>
+<body>
+  
+  <script>
+
+    function minMax(arr){
+      res = {};
+      let res_min = Infinity;
+      let res_max = -Infinity;
+
+      for (let i=0; i<arr.length;i++){
+        res_min = Math.min(res_min, arr[i]);
+        res_max = Math.max(res_max, arr[i]);
+      }
+      
+      res['min'] = res_min;
+      res['max'] = res_max;
+
+      return res;
+    }
+
+    console.log(minMax([1, -3, 5]));
+
+
+    function countWords(arr){
+      res = {};
+      for (let i=0;i<arr.length;i++){
+        res[arr[i]] = 0;
+      }
+
+      for (let i=0;i<arr.length;i++){
+        res[arr[i]] += 1;
+      }
+
+      return res;
+    }
+
+    console.log(countWords(['apple','grape','apple','apple']));
+
+  </script>
+</body>
+</html>

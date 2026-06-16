@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11 Exercises</title>
+</head>
+<body>
+  
+  <script>
+    const nums = [10, 20, 30];
+    nums[nums.length-1]=99;
+    console.log(nums);
+
+    function getLastValue(array){
+      return array[array.length-1];
+    }
+
+    console.log(getLastValue(nums));
+
+    function arraySwap(array){
+      firstVal = array[0];
+      lastVal = array[array.length-1];
+      array[0] = lastVal;
+      array[array.length-1] = firstVal;
+      return array;
+    }
+
+    console.log(arraySwap(nums));
+
+
+    for (let i=0; i<=10; i+=2){
+      console.log(i);
+    }
+
+    for (let j=5;j>=0;j--){
+      console.log(j);
+    }
+
+    i = 0;
+    while(i<=10){
+      console.log(i);
+      i+=2;
+    }
+
+    j = 5;
+    while(j>=0){
+      console.log(j);
+      j--;
+    }
+
+    arr = [1,2,3,4]
+
+    for (let i=0;i<arr.length;i++){
+      arr[i]+=1;
+    }
+    console.log(arr);
+
+
+    function addOne(array){
+      for (let i=0;i<array.length;i++){
+        array[i]+=1
+      }
+      return array;
+    }
+
+    function addNum(arr, num){
+      for (let i=0;i<arr.length;i++){
+        arr[i]+=num;
+      }
+      return arr;
+    }
+
+
+    function addArrays(arr1, arr2){
+      arr = [];
+      for (let i=0;i<arr1.length;i++){
+        arr.push(arr1[i]+arr2[i]);
+      }
+      return arr;
+    }
+
+    console.log(addArrays([1,1,2],[1,1,3]));
+
+    function countPositives(arr){
+      let positives = 0;
+      for (let i=0;i<arr.length;i++){
+        if (arr[i]>0){
+          positives += 1;
+        }
+      }
+      return positives;
+    }
+
+    console.log(countPositives([1,-3,5]));
+
+
+  </script>
+
+</body>
+</html>
