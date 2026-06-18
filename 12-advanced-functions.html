@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced functions</title>
+</head>
+<body>
+
+  <button onClick="" class="js-button">Click</button>
+
+  <script>
+
+    const buttonElement = document.querySelector(".js-button");
+    buttonElement.addEventListener("click",()=>{console.log("click!")}); //arrow function
+    buttonElement.addEventListener("click",()=>{console.log("click2!")});
+    //event listener can add multiple functions to a single click
+    const func2 = () => {
+      console.log("click3!");
+    };
+    buttonElement.addEventListener("click",func2); //adding function to a click event
+    buttonElement.removeEventListener("click",func2); //removing event listener
+
+    function greeting() {
+      console.log('hello');
+    }
+
+    greeting();
+
+    const func = function (){
+      console.log('hello2');
+    }
+    // Anonymous function
+
+    func();
+
+    const obj1 = {
+      num:2,
+      fun: function(){
+        console.log('hello3');
+      }
+    }
+    // Function inside object
+
+    obj1.fun();
+
+
+    function run(param){
+      param();
+    }
+
+    run(function(){
+      console.log("hello4");
+    });
+    //function can be passed as a parameter
+    // to another function
+
+    setTimeout(
+    function(){
+      console.log("timeout check!")
+    }  
+    , 5000);
+
+    function greetName(firstName, lastName){
+      console.log(`Hello ${firstName} , ${lastName}`);
+    }
+
+    setTimeout(greetName, 3000, 'Sai', 'Rakurty');
+    //pass function with params into settimeout function
+
+    //setTimeout & setInterval makes the code asynchronous
+
+    setInterval(greeting, 10000);
+    //runs the function multiple times in this interval
+
+    arr=['Sai','Pavan','Kumar'];
+    arr.forEach(function(name, index){
+      console.log(index);
+      console.log(name);
+    });
+    //for each in js
+
+
+    //arrow functions
+    const regularFunction = function(){
+      console.log("regular function!")
+    }
+
+    regularFunction();
+
+    const arrowFunction = () => {
+      console.log("arrow function!");
+    }
+
+    arrowFunction();
+
+    const oneParam = (param) => {
+      console.log(param+1);
+    }
+
+    oneParam(5);
+
+    const oneLine = () => console.log(100); //oneline arrow function
+    oneLine();
+
+
+    ["Sai","Pavan","Kumar"].forEach(
+      (name, index) => {
+        console.log(index);
+        console.log(name);
+      }
+    );
+
+
+  </script>
+  
+</body>
+</html>

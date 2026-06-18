@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12 exercises</title>
+</head>
+<body>
+
+  <button class="js-start" onClick = "setToFinish();">Start</button>
+  <button class="add-to-cart" onClick="addToCart();">Add to Cart</button>
+  <p class="add-to-cart-message"></p>
+  <script>
+
+    let timeOut;
+
+    const add = function(){
+      console.log(2+3);
+    }
+    add();
+    add();
+
+    function twice(func){
+      func();
+      func();
+    }
+
+    twice(add);
+
+    function setToFinish(){
+      document.querySelector(".js-start").innerHTML = "Loading..";
+      setTimeout(
+        function(){
+          document.querySelector(".js-start").innerHTML = "Finished!";
+        },1000
+      )
+    }
+
+    function addToCart(){
+      document.querySelector(".add-to-cart-message").innerHTML = "Added";
+      clearTimeout(timeOut);
+      timeOut = setTimeout(
+      function(){
+        document.querySelector(".add-to-cart-message").innerHTML = "";
+      }
+      ,2000);
+    }
+
+
+  </script>
+</body>
+</html>

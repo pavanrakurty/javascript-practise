@@ -21,10 +21,11 @@ function UpdateToDoListKeyDown(event){
 
 function renderToDoList(){
   let toDOList = '';
-  for (let i=0; i<todo.length; i++){
+  todo.forEach((toDoObject, i) => {
+    const {name, dueDate} = toDoObject;
     toDOList += `
-                <div>${todo[i]['name']}</div>
-                <div>${todo[i]['dueDate']}</div>
+                <div>${name}</div>
+                <div>${dueDate}</div>
                 <button onClick=
                   "
                   todo.splice(${i},1);
@@ -32,6 +33,20 @@ function renderToDoList(){
                   "
                   class = "delete-button"
                 >Delete</button>`;
-  }
+
+  });
+
+  // for (let i=0; i<todo.length; i++){
+  //   toDOList += `
+  //               <div>${todo[i]['name']}</div>
+  //               <div>${todo[i]['dueDate']}</div>
+  //               <button onClick=
+  //                 "
+  //                 todo.splice(${i},1);
+  //                 renderToDoList();
+  //                 "
+  //                 class = "delete-button"
+  //               >Delete</button>`;
+  // }
   document.querySelector('.todo-list').innerHTML = toDOList;
 }
