@@ -2,6 +2,11 @@ let todo = [];
 
 renderToDoList();
 
+document.querySelector(".js-add-button").addEventListener("click",
+() => {
+  UpdateToDoList();
+});
+
 function UpdateToDoList(){
   const name = document.querySelector('.todo-value').value;
   const dueDate = document.querySelector('.due-date').value;
@@ -26,12 +31,7 @@ function renderToDoList(){
     toDOList += `
                 <div>${name}</div>
                 <div>${dueDate}</div>
-                <button onClick=
-                  "
-                  todo.splice(${i},1);
-                  renderToDoList();
-                  "
-                  class = "delete-button"
+                <button class = "delete-button js-delete-button"
                 >Delete</button>`;
 
   });
@@ -49,4 +49,13 @@ function renderToDoList(){
   //               >Delete</button>`;
   // }
   document.querySelector('.todo-list').innerHTML = toDOList;
+
+  document.querySelectorAll(".js-delete-button").forEach(
+    (deleteButton, index) => {
+      deleteButton.addEventListener("click",()=>{
+        todo.splice(index,1);
+        renderToDoList();
+      });
+    }
+  );
 }

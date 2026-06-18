@@ -111,7 +111,25 @@
         console.log(name);
       }
     );
+    
 
+    console.log(
+      [1,-3,5].filter(
+        (val, ind) => {
+          // if (val>=0){
+          //   return true;
+          // }
+          // return false;
+          return val>=0;
+          }
+      )
+    ); //filtering array using filter property
+
+    console.log([1,2,3].map((val, ind)=>{
+      return 2*val;
+    })); //creating a new array using map
+
+    console.log([1,2,3].map(val => 2*val)); //creating a new array using map in single line
 
   </script>
   

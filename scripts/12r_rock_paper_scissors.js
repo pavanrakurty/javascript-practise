@@ -18,13 +18,10 @@ document.querySelector(".js-button-scissors").addEventListener("click",() => {
   playGame('scissors');
 });
 
-document.querySelector(".js-rest-button").
+
+document.querySelector(".js-reset-button").
   addEventListener("click",() => {
-    score.wins = 0;
-    score.losses = 0;
-    score.ties = 0;
-    localStorage.removeItem('score');
-    updateScoreElement();
+    resetConfirmation();
   });
 
 document.querySelector(".js-auto-play").addEventListener("click",() => {
@@ -129,7 +126,7 @@ function pickComputerMove() {
   return computerMove;
 }
 
-isAutoPlaying = false;
+let isAutoPlaying = false;
 
 function autoPlay(){
 
@@ -140,10 +137,63 @@ function autoPlay(){
         playGame(userMove);
       }, 1000
     );
+    document.querySelector(".js-stop-auto-play").innerHTML = "Stop Playing";
     isAutoPlaying = true;
   }
   else{
     clearInterval(intervalId);
+    document.querySelector(".js-stop-auto-play").innerHTML = "Auto Play";
     isAutoPlaying = false;
   }
 }
+
+// document.querySelector(".js-stop-auto-play").addEventListener("click",()=>{
+//   if (isAutoPlaying){
+//   document.querySelector(".auto-play").text = "Stop Playing";}
+// });
+
+document.body.addEventListener("keydown",(event)=>{
+  if(event.key==='a'){
+    autoPlay();
+  }
+});
+
+document.body.addEventListener("keydown",(event) =>{
+  if(event.key==='Backspace'){
+    resetConfirmation();
+    }
+  }
+);
+
+function reset() {
+  score.wins = 0;
+  score.losses = 0;
+  score.ties = 0;
+  localStorage.removeItem('score');
+  updateScoreElement();
+  document.querySelector(".js-reset-confirmation")
+      .innerHTML = '';
+}
+
+
+function resetConfirmation(){
+  document.querySelector(".js-reset-confirmation")
+    .innerHTML = 
+    `
+    <p>Are you sure you want to reset the score?</p>
+    <button class="reset-yes-button js-reset-yes-button">Yes</button>
+    <button class="reset-no-button js-reset-no-button">No</button>
+    `;
+
+  document.querySelector(".js-reset-yes-button").addEventListener("click",
+  () => {
+    reset();
+  });
+  
+  document.querySelector(".js-reset-no-button").addEventListener("click",
+  () => {
+    document.querySelector(".js-reset-confirmation")
+      .innerHTML = '';
+  });
+}
+
