@@ -1,4 +1,4 @@
-import {cart,removeCartItem,updateCartQuantity,updateQuantity} from '../data/cart.js';
+import {cart,removeCartItem,updateCartQuantity,updateQuantity,updateDeliveryOption} from '../data/cart.js';
 import {products} from '../data/products.js';
 import formatCurrency from './utils/money.js';
 import dayjs from 'https://esm.run/dayjs';
@@ -95,7 +95,9 @@ function deliveryOptionsGenerator(matchingProduct, cartItem){
     
     deliveryOptionsHTML += 
     `
-          <div class="delivery-option">
+          <div class="delivery-option js-delivery-option"
+          data-product-id = "${matchingProduct.id}"
+          data-delivery-option-id = "${deliveryOption.id}">
             <input type="radio"
               ${isChecked ? 'checked' : ''}
               class="delivery-option-input"
@@ -166,4 +168,14 @@ document.querySelectorAll('.js-save-button').forEach((saveButton) => {
     // Double-check if this selector shouldn't be '.js-cart-checkout-count-display'
     updateCartQuantity('.js-cart-checkout-count-display'); 
   });
+});
+
+
+document.querySelectorAll('.js-delivery-option').forEach((deliveryOption) => {
+
+  deliveryOption.addEventListener('click', () => {
+    const {productId,deliveryOptionId}= deliveryOption.dataset;
+    updateDeliveryOption(productId, deliveryOptionId);
+  });
+
 });
