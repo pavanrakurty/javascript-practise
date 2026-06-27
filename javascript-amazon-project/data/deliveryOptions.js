@@ -16,3 +16,13 @@ export const deliveryOptions = [
   }
 ];
 
+
+export function getDeliveryOptions(deliverOptionId){
+  let matchingDeliveryOption;
+  deliveryOptions.forEach((deliveryOption)=>{
+    if(deliveryOption.id===deliverOptionId){
+      matchingDeliveryOption = deliveryOption;
+    }
+  });
+  return matchingDeliveryOption || deliveryOptions[0];
+}
