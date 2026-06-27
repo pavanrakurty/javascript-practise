@@ -4,7 +4,7 @@ import formatCurrency from '../utils/money.js';
 import dayjs from 'https://esm.run/dayjs';
 import {deliveryOptions, getDeliveryOptions} from '../../data/deliveryOptions.js';
 import {paymentSummary} from './paymentSummary.js';
-
+import isWeekend,{nearestWeekDay} from '../utils/days.js';
 
 export function renderOrderSummary(){
   let checkoutSummaryHTML = '';
@@ -18,7 +18,13 @@ export function renderOrderSummary(){
 
     const today = dayjs();
     const deliveryDaysOpted = deliveryOption.deliveryDays;
-    const deliveryDate = today.add(deliveryDaysOpted, 'day');
+    let deliveryDate = today.add(deliveryDaysOpted, 'day');
+
+    deliveryDate = nearestWeekDay(deliveryDate);
+    // while(isWeekend(deliveryDate)){
+    //   deliveryDate = deliveryDate.add(1,'day');
+    // };
+
     const deliveryDateString = deliveryDate.format('dddd, MMMM D');
 
     checkoutSummaryHTML += `
@@ -72,9 +78,10 @@ export function renderOrderSummary(){
     deliveryOptions.forEach((deliveryOption) => {
       const today = dayjs();
       const deliveryDaysOpted = deliveryOption.deliveryDays;
-      const deliveryDate = today.add(deliveryDaysOpted, 'day');
-
+      let deliveryDate = today.add(deliveryDaysOpted, 'day');
+      deliveryDate = nearestWeekDay(deliveryDate);
       const deliveryDateString = deliveryDate.format('dddd, MMMM D');
+      
       const deliveryPriceString = 
         deliveryOption.priceCents === 0? 'Free':`$${formatCurrency(deliveryOption.priceCents)}`;
       
@@ -116,7 +123,8 @@ export function renderOrderSummary(){
       const container = document.querySelector(`.js-cart-item-container-${productId}`);
       container.remove();
       // document.querySelector('.js-cart-checkout-count-display').innerHTML = getcartQuantity();
-      updateCartQuantity('.js-cart-checkout-count-display');
+      //updateCartQuantity('.js-cart-checkout-count-display');
+      renderOrderSummary();
       paymentSummary();
     });
   });
@@ -151,10 +159,12 @@ export function renderOrderSummary(){
       savingItem.classList.remove('is-editing-quantity');
       updateQuantity(productId, newQuantity);
 
-      document.querySelector(`.js-new-quantity-label-${productId}`).innerHTML = newQuantity;
+      renderOrderSummary();
+      // document.querySelector(`.js-new-quantity-label-${productId}`).innerHTML = newQuantity;
 
-      // Double-check if this selector shouldn't be '.js-cart-checkout-count-display'
-      updateCartQuantity('.js-cart-checkout-count-display'); 
+      // // Double-check if this selector shouldn't be '.js-cart-checkout-count-display'
+      // updateCartQuantity('.js-cart-checkout-count-display');
+      paymentSummary();
     });
   });
 
