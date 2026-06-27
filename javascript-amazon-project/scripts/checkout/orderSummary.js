@@ -3,6 +3,7 @@ import {getProduct} from '../../data/products.js';
 import formatCurrency from '../utils/money.js';
 import dayjs from 'https://esm.run/dayjs';
 import {deliveryOptions, getDeliveryOptions} from '../../data/deliveryOptions.js';
+import {paymentSummary} from './paymentSummary.js';
 
 
 export function renderOrderSummary(){
@@ -116,6 +117,7 @@ export function renderOrderSummary(){
       container.remove();
       // document.querySelector('.js-cart-checkout-count-display').innerHTML = getcartQuantity();
       updateCartQuantity('.js-cart-checkout-count-display');
+      paymentSummary();
     });
   });
 
@@ -163,6 +165,7 @@ export function renderOrderSummary(){
       const {productId,deliveryOptionId}= deliveryOption.dataset;
       updateDeliveryOption(productId, deliveryOptionId);
       renderOrderSummary();
+      paymentSummary();
     });
 
   });
