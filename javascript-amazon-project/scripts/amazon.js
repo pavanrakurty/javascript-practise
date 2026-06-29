@@ -1,11 +1,11 @@
 import {cart, addToCart, updateCartQuantity as updateCartQuantityFromCart} from "../data/cart.js";
-import {products,loadProducts} from "../data/products.js";
+import {products,loadProductsFetch} from "../data/products.js";
 
 
-loadProducts(renderProductGrid);
+
 
 function renderProductGrid(){
-  
+
   let productsHTML = '';
 
   updateCartQuantityFromCart('.js-update-cart-quantity');
@@ -93,3 +93,7 @@ function renderProductGrid(){
     })
   });
 }
+
+loadProductsFetch().then(()=>{
+  renderProductGrid();
+});
